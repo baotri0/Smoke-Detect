@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "961639543233",
+    "project_id": "detect-smoke",
+    "storage_bucket": "detect-smoke.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961639543233:android:2cac5d3256293e9ba7bf40",
+        "android_client_info": {
+          "package_name": "com.example.detect_smoke"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXPiOkFvpBPy9n61MuOcbgTnriunoZ0lo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
