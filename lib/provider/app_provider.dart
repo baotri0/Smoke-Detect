@@ -17,7 +17,8 @@ import '../model/user_model.dart';
 class AppProvider with ChangeNotifier {
   //// Cart Work
   UserModel? _userModel;
-  Log? _log;
+  late Log _log;
+  late Log _log1;
 
   ////// USer Information
   void getUserInfoFirebase() async {
@@ -92,19 +93,40 @@ class AppProvider with ChangeNotifier {
   }
 
 
-  Future<void> fetchLog() async {
-    final response = await http
-        .get(Uri.parse('http://192.168.43.26/api/data'));
-    if (response.statusCode == 200) {
-      _log = Log.fromJson(jsonDecode(response.body));
-    } else {
-      throw const FormatException('Failed to load data');
+  Future<bool> fetchLog() async {
+    try{
+      final response = await http
+          .get(Uri.parse('http://192.168.43.26/api/data'));
+      if (response.statusCode == 200) {
+        _log = Log.fromJson(jsonDecode(response.body));
+        return true;
+      } else {
+        return false;
+        //throw const FormatException('Failed to load data');
+      }
+    } catch(e){
+      return false;
+    }
+  }
+
+  Future<bool> fetchLog1() async {
+    try{
+      final response = await http
+          .get(Uri.parse('http://192.168.43.29/api/data'));
+      if (response.statusCode == 200) {
+        _log1 = Log.fromJson(jsonDecode(response.body));
+        return true;
+      } else {
+        return false;
+        //throw const FormatException('Failed to load data');
+      }
+    } catch(e){
+      return false;
     }
   }
 
   UserModel get getUserInformation => _userModel!;
-  Log get getLog => _log!;
-
+  Log get getLog => _log;
+  Log get getLog1 => _log1;
   Future<void> callBackFunc() async {}
-
 }

@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       create: (context)=>AppProvider(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Food Order Delivery',
+        title: 'Smoke Detect',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
