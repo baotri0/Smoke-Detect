@@ -93,40 +93,26 @@ class AppProvider with ChangeNotifier {
   }
 
 
-  Future<bool> fetchLog() async {
-    try{
-      final response = await http
-          .get(Uri.parse('http://192.168.43.26/api/data'));
-      if (response.statusCode == 200) {
-        _log = Log.fromJson(jsonDecode(response.body));
-        return true;
-      } else {
-        return false;
-        //throw const FormatException('Failed to load data');
-      }
-    } catch(e){
-      return false;
-    }
-  }
+  Future<List<Log>> fetchLog() async {
+    List<Log> dataList = [];
 
-  Future<bool> fetchLog1() async {
-    try{
+    List<String> serverUrls = [
+      "http://192.168.43.100/api/data",
+    ];
+
+    for (String url in serverUrls) {
       final response = await http
-          .get(Uri.parse('http://192.168.43.29/api/data'));
+          .get(Uri.parse(url));
       if (response.statusCode == 200) {
-        _log1 = Log.fromJson(jsonDecode(response.body));
-        return true;
-      } else {
-        return false;
-        //throw const FormatException('Failed to load data');
+        Log data = Log.fromJson(jsonDecode(response.body));
+        dataList.add(data);
+      }else{
+        print('Failed to load data from $url');
       }
-    } catch(e){
-      return false;
     }
+    return dataList;
   }
 
   UserModel get getUserInformation => _userModel!;
-  Log get getLog => _log;
-  Log get getLog1 => _log1;
   Future<void> callBackFunc() async {}
 }

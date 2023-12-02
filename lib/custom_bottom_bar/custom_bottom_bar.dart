@@ -1,3 +1,4 @@
+import 'package:detect_smoke/screen/home/log_screeend.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -19,6 +20,7 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
 
   List<Widget> _buildScreens() => [
     Home(),
+    LogScreen(),
     AccountScreen(),
   ];
 
@@ -29,6 +31,12 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
         title: "Home",
         activeColorPrimary: Colors.white,
         inactiveColorPrimary: Colors.white,),
+    PersistentBottomNavBarItem(
+      icon: const Icon(Icons.home),
+      inactiveIcon: Icon(Icons.warning_outlined),
+      title: "Home",
+      activeColorPrimary: Colors.white,
+      inactiveColorPrimary: Colors.white,),
     PersistentBottomNavBarItem(
       icon: const Icon(Icons.person),
       inactiveIcon: Icon(Icons.person_outline),
